@@ -1,0 +1,19 @@
+runner:
+  name: File to Fuzzy Hash via SSDeep
+  description: Convert a file to a fuzzy hash via SSDeep.
+  version: 0.0.1
+
+build:
+  commands: |
+    echo "START: Building the runner"
+    apt-get install -y libfuzzy-dev
+    python3 -m pip install -U -r requirements.txt
+    echo "END: Building the runner"
+
+webform:
+  - name: file
+    prompt: File
+    type: file
+
+launch:
+  command: app.py --file ${file}
